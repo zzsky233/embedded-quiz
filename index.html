@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>嵌入式刷题工具</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar" aria-label="刷题控制">
+      <div class="brand">
+        <span class="brand-mark">E</span>
+        <div>
+          <h1>嵌入式刷题</h1>
+          <p>个人选择题练习</p>
+        </div>
+      </div>
+
+      <section class="panel">
+        <h2>题库</h2>
+        <label class="field">
+          <span>范围</span>
+          <select id="sourceSelect"></select>
+        </label>
+        <label class="field">
+          <span>模式</span>
+          <select id="modeSelect">
+            <option value="order">顺序刷题</option>
+            <option value="random">随机刷题</option>
+            <option value="wrong">错题重练</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="panel stats-grid" aria-label="学习统计">
+        <div>
+          <strong id="doneCount">0</strong>
+          <span>已答</span>
+        </div>
+        <div>
+          <strong id="accuracyRate">0%</strong>
+          <span>正确率</span>
+        </div>
+        <div>
+          <strong id="wrongCount">0</strong>
+          <span>错题</span>
+        </div>
+        <div>
+          <strong id="favoriteCount">0</strong>
+          <span>收藏</span>
+        </div>
+      </section>
+
+      <section class="panel actions">
+        <button id="favoriteBtn" type="button">收藏本题</button>
+        <button id="showExplanationBtn" type="button">查看解析</button>
+        <button id="resetProgressBtn" type="button">重置进度</button>
+        <button id="clearWrongBtn" type="button">清空错题</button>
+      </section>
+    </aside>
+
+    <section class="practice">
+      <header class="topbar">
+        <div>
+          <span id="questionSource" class="tag">Sheet</span>
+          <span id="progressText" class="progress-text">第 0 / 0 题</span>
+        </div>
+        <div class="top-actions">
+          <button id="prevBtn" type="button" aria-label="上一题">上一题</button>
+          <button id="nextBtn" type="button" aria-label="下一题">下一题</button>
+        </div>
+      </header>
+
+      <article class="question-card">
+        <div class="question-meta">
+          <span id="questionNumber">#0</span>
+          <span id="answerState">请选择答案</span>
+        </div>
+        <h2 id="questionText">正在加载题目...</h2>
+        <div id="optionsList" class="options-list"></div>
+        <div id="feedback" class="feedback" hidden></div>
+      </article>
+    </section>
+
+    <aside class="question-nav" aria-label="题目选择">
+      <div class="question-nav-header">
+        <h2>题目栏</h2>
+        <span id="navCount">0 题</span>
+      </div>
+      <div class="question-nav-legend">
+        <span><i class="legend-dot is-current"></i>当前</span>
+        <span><i class="legend-dot is-done"></i>已答</span>
+        <span><i class="legend-dot is-wrong"></i>错题</span>
+      </div>
+      <div id="questionNav" class="question-nav-grid"></div>
+    </aside>
+  </main>
+
+  <script src="data/questions.js"></script>
+  <script src="data/explanations.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

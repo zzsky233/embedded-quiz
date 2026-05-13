@@ -1,0 +1,4 @@
+.env
+data/deepseek_explanations_cache.json
+__pycache__/
+*.pyc
